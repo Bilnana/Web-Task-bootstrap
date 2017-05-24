@@ -1,0 +1,35 @@
+body {
+background-color: $grey;
+  // background-image: url('/img/Background.png');
+ 
+}
+
+.navigation{
+    background-color:$white;
+    height: 3472px; 
+}
+
+.content{
+    height: auto;
+}
+
+
+/********  MIXINS FOR NEW CONTAINER *********/
+
+@media (min-width: 768px) {
+.my-custom-container{
+    width:600px;
+}}
+
+@media (min-width: 992px) {
+.my-custom-container{
+    width:720px;
+}}
+
+@media (min-width: 1200px) {
+.my-custom-container{
+    width:1560px;
+}}
+
+/********  MIXINS FOR Carausel *********/
+

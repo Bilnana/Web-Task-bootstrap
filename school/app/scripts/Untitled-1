@@ -1,0 +1,25 @@
+            $scope.professors= [];
+            dataFactory.getProfessors()
+            .then(
+                function(response) {
+                    $scope.professorssors = response.data;
+                }
+            );
+             
+            $scope.students= [];
+            dataFactory.getStudents()
+            .then(
+                function(response) {
+                    $scope.students = response.data;
+                }
+            );
+            
+            
+            
+             this.getProfessors = function(){
+                              return $http.get(baseURL+"professors");
+                    };
+                this.getStudents = function () {
+                            return $http.get(baseURL+"students");
+                    };
+    

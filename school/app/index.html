@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="schoolApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- build:css styles/main.css -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/styles/css/main.css" rel="stylesheet">
+    <!-- endbuild -->
+    
+    <title>School administration </title>    
+
+</head>
+
+<body>
+    
+  <div class="container" ng-controller="ProfessorController">
+    <div class="row">
+        <div class="professors col-sm-5">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th>Profesori</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="professor in professors">
+                  <td>{{professor.name}}<br/>{{professor.subject}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <input type="text" ng-model="newProfessor.name" class="form-control"  placeholder="Ime i prezime"><br/>
+                    <input type="text" ng-model="newProfessor.subject" class="form-control" placeholder="Predmet">
+                </div>
+                <button type="button" ng-click="saveProfessor()" class="btn btn-primary">Dodaj</button>
+            </div>    
+        </div>
+        
+        <div class="col-sm-1"></div>
+        
+        <div class="students col-sm-5">
+          <table class="table" >
+              <thead>
+                <tr>
+                  <th>Studenti</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="student in students">
+                  <td>{{student.name}}<br/>JMBG:{{student.born}}<br/>Br.indexa:{{student.number}}<br/>Izabrani profesor:{{student.option}}<br/>
+                    <select class="options" ng-model="newOption" ng-change="updateStudents(student,newStudent,newOption)">
+                        <option ng-repeat="x in professors" value="{{x.name}}">{{x.name}}</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <input type="text" ng-model="newStudent.name" class="form-control"  placeholder="Ime i prezime"><br/>
+                    <input type="text" ng-model="newStudent.born" class="form-control" placeholder="JMBG"><br/>
+                    <input type="text" ng-model="newStudent.number" class="form-control" placeholder="Br.indexa">
+                    <p>Izabrani profesor:{{newStudent.option}} </p>
+                </div>
+                <button type="button" class="btn btn-primary" ng-click="saveStudent()">Dodaj</button>
+            </div>    
+        </div>
+    </div>
+  </div>
+
+</body>
+<!-- build:js scripts/main.js -->
+<script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="/scripts/controller.js"></script>
+<script src="/scripts/services.js"></script>
+<!-- endbuild -->
+    
+</html>
